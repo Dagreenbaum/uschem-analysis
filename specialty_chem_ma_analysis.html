@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Specialty Chemicals M&A Pricing — Quiet Capital</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #1b2e45;
+    --navy-light: #253d57;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-pale: #fdf6e3;
+    --slate: #4a6580;
+    --text: #1a2533;
+    --muted: #6b7f96;
+    --border: #dde3ea;
+    --bg: #f5f7fa;
+    --white: #ffffff;
+
+    --t1: #c0392b;
+    --t1-bg: #fde8e6;
+    --t2: #d35400;
+    --t2-bg: #fdf0e6;
+    --t3: #c7970a;
+    --t3-bg: #fdf8e6;
+    --t4: #1e8449;
+    --t4-bg: #e6f4ed;
+    --t5: #1a5fa8;
+    --t5-bg: #e6f0fb;
+
+    --premium: #6c3483;
+    --premium-bg: #f4ecfb;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .page-header {
+    background: var(--navy);
+    padding: 36px 48px 32px;
+    border-bottom: 3px solid var(--gold);
+  }
+  .header-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .page-header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--white);
+    font-weight: 400;
+    line-height: 1.25;
+    margin-bottom: 6px;
+  }
+  .page-header .subtitle {
+    color: #8eacc8;
+    font-size: 13px;
+    font-weight: 400;
+  }
+  .header-meta {
+    margin-top: 16px;
+    display: flex;
+    gap: 24px;
+  }
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .meta-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .1em;
+    color: #5580a0;
+    text-transform: uppercase;
+  }
+  .meta-value {
+    font-size: 12px;
+    color: #b5cce0;
+    font-weight: 500;
+  }
+
+  /* CONTENT */
+  .content { max-width: 1100px; margin: 0 auto; padding: 36px 40px 60px; }
+
+  /* SECTION HEADERS */
+  .section {
+    margin-bottom: 48px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--gold);
+    background: var(--navy);
+    padding: 3px 8px;
+    border-radius: 3px;
+    letter-spacing: .08em;
+  }
+  .section-header h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--navy);
+  }
+  .section-note {
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.55;
+    margin-bottom: 20px;
+    padding: 10px 14px;
+    background: var(--white);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* BAR CHART */
+  .chart-wrap {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 28px 18px;
+    margin-bottom: 20px;
+  }
+  .chart-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 11px;
+  }
+  .bar-label {
+    width: 115px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text);
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .bar-sublabel {
+    display: block;
+    font-size: 9.5px;
+    font-weight: 400;
+    color: var(--muted);
+  }
+  .bar-track {
+    flex: 1;
+    height: 30px;
+    background: #eef1f6;
+    border-radius: 4px;
+    position: relative;
+  }
+  .bar-fill {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: white;
+  }
+  .bar-midline {
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    width: 2px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 1px;
+  }
+  .bar-ev {
+    width: 110px;
+    font-size: 10.5px;
+    color: var(--muted);
+    flex-shrink: 0;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .axis-row {
+    display: flex;
+    padding-left: 127px;
+    padding-right: 122px;
+    justify-content: space-between;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px;
+    color: var(--muted);
+    margin-top: 8px;
+    border-top: 1px solid var(--border);
+    padding-top: 6px;
+  }
+  .chart-caption {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  /* TIER TABLE */
+  .tier-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 12px;
+  }
+  .tier-table thead th {
+    background: var(--navy);
+    color: rgba(255,255,255,0.85);
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    font-family: 'IBM Plex Mono', monospace;
+    white-space: nowrap;
+  }
+  .tier-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background .15s;
+  }
+  .tier-table tbody tr:last-child { border-bottom: none; }
+  .tier-table tbody tr:hover { background: #f8fafc; }
+  .tier-table tbody td {
+    padding: 12px 12px;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .tier-badge {
+    display: inline-block;
+    padding: 3px 9px 3px 7px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .t1-badge { background: var(--t1-bg); color: var(--t1); border-left: 3px solid var(--t1); }
+  .t2-badge { background: var(--t2-bg); color: var(--t2); border-left: 3px solid var(--t2); }
+  .t3-badge { background: var(--t3-bg); color: var(--t3); border-left: 3px solid var(--t3); }
+  .t4-badge { background: var(--t4-bg); color: var(--t4); border-left: 3px solid var(--t4); }
+  .t5-badge { background: var(--t5-bg); color: var(--t5); border-left: 3px solid var(--t5); }
+
+  .multiple-big {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    display: block;
+  }
+  .multiple-mid {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    display: block;
+    margin-top: 1px;
+  }
+  .ev-range {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .buyer-chips { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 4px; }
+  .chip {
+    font-size: 9.5px;
+    background: #eef1f6;
+    color: var(--slate);
+    padding: 2px 6px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .deal-note {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+  .deal-bold { color: var(--text); font-weight: 600; font-size: 11px; }
+  .deal-multiple {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .premium-pill {
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 9.5px;
+    color: var(--premium);
+    background: var(--premium-bg);
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+  .discount-pill {
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 9.5px;
+    color: var(--t1);
+    background: var(--t1-bg);
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+
+  /* TWO-COL LAYOUT */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 4px;
+  }
+
+  /* DRIVER CARDS */
+  .driver-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .driver-card h3 {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-bottom: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .driver-card h3.up { color: var(--t4); }
+  .driver-card h3.down { color: var(--t1); }
+  .driver-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 7px;
+    font-size: 11.5px;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .driver-icon { flex-shrink: 0; font-size: 12px; margin-top: 1px; }
+  .driver-detail {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 1px;
+  }
+
+  /* POSITIONING FRAMEWORK */
+  .framework-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 12px;
+  }
+  .framework-table thead th {
+    background: var(--navy-mid);
+    color: rgba(255,255,255,0.85);
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .framework-table thead th.center { text-align: center; }
+  .framework-table tbody tr { border-bottom: 1px solid var(--border); }
+  .framework-table tbody tr:last-child { border-bottom: none; }
+  .framework-table tbody tr:nth-child(even) { background: #fafbfc; }
+  .framework-table tbody td { padding: 10px 12px; vertical-align: middle; line-height: 1.4; }
+  .framework-table tbody td.center { text-align: center; }
+
+  .dim-name { font-weight: 700; font-size: 12px; color: var(--navy); }
+  .dim-desc { font-size: 10.5px; color: var(--muted); }
+
+  .level-cell {
+    font-size: 11px;
+    line-height: 1.4;
+    color: var(--text);
+  }
+  .level-low { border-left: 3px solid var(--t1); padding-left: 6px; }
+  .level-mid { border-left: 3px solid var(--t3); padding-left: 6px; }
+  .level-high { border-left: 3px solid var(--t4); padding-left: 6px; }
+
+  .impact-badge {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .impact-low { background: var(--t1-bg); color: var(--t1); }
+  .impact-mid { background: var(--t3-bg); color: var(--t3); }
+  .impact-high { background: var(--t4-bg); color: var(--t4); }
+  .impact-premium { background: var(--premium-bg); color: var(--premium); }
+
+  .uschem-cell {
+    background: #fffbe6;
+    border: 1px dashed var(--gold);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 10.5px;
+    color: var(--text);
+    font-style: italic;
+    min-width: 100px;
+  }
+
+  /* COMPS TABLES */
+  .comps-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 12px;
+    margin-bottom: 24px;
+  }
+  .comps-table thead th {
+    background: var(--navy-light);
+    color: rgba(255,255,255,0.85);
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .comps-table thead th.right { text-align: right; }
+  .comps-table tbody tr { border-bottom: 1px solid var(--border); }
+  .comps-table tbody tr:last-child { border-bottom: none; }
+  .comps-table tbody tr:nth-child(even) { background: #fafbfc; }
+  .comps-table tbody tr:hover { background: #f0f5fa; }
+  .comps-table tbody td { padding: 11px 12px; vertical-align: top; line-height: 1.45; }
+  .comps-table tbody td.right { text-align: right; }
+  .comps-table tbody td.mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    white-space: nowrap;
+  }
+
+  .ticker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    background: var(--navy);
+    color: var(--gold-light);
+    padding: 2px 6px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-left: 4px;
+  }
+  .company-name { font-weight: 700; font-size: 12.5px; }
+  .company-desc { font-size: 10.5px; color: var(--muted); margin-top: 1px; }
+
+  .multiple-cell {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .multiple-premium { color: var(--t5); }
+  .multiple-mid-val { color: var(--t4); }
+  .multiple-low-val { color: var(--t3); }
+  .multiple-discount { color: var(--t2); }
+
+  .relevance-tag {
+    display: inline-block;
+    font-size: 9.5px;
+    padding: 1px 6px;
+    border-radius: 2px;
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+  .tag-primary { background: var(--t5-bg); color: var(--t5); }
+  .tag-secondary { background: var(--t4-bg); color: var(--t4); }
+  .tag-caution { background: var(--t3-bg); color: var(--t3); }
+  .tag-carveout { background: var(--t1-bg); color: var(--t1); }
+
+  .margin-bar {
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    margin-top: 3px;
+    position: relative;
+    overflow: hidden;
+    width: 80px;
+  }
+  .margin-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    border-radius: 3px;
+  }
+
+  .sub-header {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 20px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* CALLOUT STRIP */
+  .callout {
+    background: var(--navy);
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+  .callout-item h4 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9.5px;
+    color: var(--gold);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .callout-item p {
+    font-size: 12px;
+    color: #9ab5cc;
+    line-height: 1.5;
+  }
+  .callout-item strong { color: var(--white); }
+
+  /* FOOTER */
+  .page-footer {
+    margin-top: 50px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 10px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .source-list { line-height: 1.8; }
+
+  .highlight-row { background: var(--gold-pale) !important; }
+  .highlight-row td { border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="header-label">Quiet Capital — Investment Research</div>
+  <h1>Specialty Chemicals M&A Pricing<br>& Competitive Landscape</h1>
+  <div class="subtitle">EBITDA tier matrix · USCHEM positioning framework · public & private comps</div>
+  <div class="header-meta">
+    <div class="meta-item">
+      <span class="meta-label">Prepared</span>
+      <span class="meta-value">June 2026</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Subject</span>
+      <span class="meta-value">US Chemical Technologies</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Data through</span>
+      <span class="meta-value">Q1 2026 actuals</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Coverage</span>
+      <span class="meta-value">4 public · 8 private comps</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+<!-- ============================================================ -->
+<!-- SECTION 1: EBITDA TIER MATRIX -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2>Acquisition Pricing by EBITDA Tier</h2>
+  </div>
+
+  <div class="section-note">
+    <strong>Two-dataset calibration:</strong> GF Data (all PE-backed MM transactions, H1 2025) anchors the floor — 5.5–7.5x across sizes. RL Hulett / PitchBook specialty chemicals data anchors the ceiling — PE median 12.3x and strategic median 10.3x in 2025. The spread is quality-driven, not a data conflict. Carve-outs, cyclical assets, and commodity-exposed businesses clear GF Data's floor. Proprietary formulations, mission-critical chemistry, and tech-enabled platforms reach the RL Hulett ceiling. Where USCHEM sits on this spectrum determines which row of the table applies.
+  </div>
+
+  <!-- BAR CHART -->
+  <div class="chart-wrap">
+    <div class="chart-title">EV/EBITDA Range by Platform Size — Specialty Chemicals PE Acquisitions (2024–2025)</div>
+
+    <!-- scale: 0–18x, track = 100% of flex space, each unit = 1/18 = 5.556% -->
+    <div class="bar-row">
+      <div class="bar-label">$2–5M EBITDA<span class="bar-sublabel">Micro / search fund</span></div>
+      <div class="bar-track">
+        <!-- 4x to 7x: start at 4/18=22.2%, width 3/18=16.7% -->
+        <div class="bar-fill" style="left:22.2%;width:16.7%;background:linear-gradient(135deg,#c0392b,#e74c3c);">4–7x</div>
+        <div class="bar-midline" style="left:30.6%;"></div><!-- midpoint 5.5x -->
+      </div>
+      <div class="bar-ev">EV: $8M–$35M</div>
+    </div>
+
+    <div class="bar-row">
+      <div class="bar-label">$5–10M EBITDA<span class="bar-sublabel">Lower middle market</span></div>
+      <div class="bar-track">
+        <!-- 5x to 8.5x: start 5/18=27.8%, width 3.5/18=19.4% -->
+        <div class="bar-fill" style="left:27.8%;width:19.4%;background:linear-gradient(135deg,#d35400,#e67e22);">5–8.5x</div>
+        <div class="bar-midline" style="left:37.5%;"></div><!-- midpoint 6.75x -->
+      </div>
+      <div class="bar-ev">EV: $25M–$85M</div>
+    </div>
+
+    <div class="bar-row">
+      <div class="bar-label">$10–25M EBITDA<span class="bar-sublabel">Core middle market</span></div>
+      <div class="bar-track">
+        <!-- 7x to 11x: start 7/18=38.9%, width 4/18=22.2% -->
+        <div class="bar-fill" style="left:38.9%;width:22.2%;background:linear-gradient(135deg,#c7970a,#f1c40f);color:#333;">7–11x</div>
+        <div class="bar-midline" style="left:50%;background:rgba(0,0,0,0.2);"></div><!-- midpoint 9x -->
+      </div>
+      <div class="bar-ev">EV: $70M–$275M</div>
+    </div>
+
+    <div class="bar-row">
+      <div class="bar-label">$25–50M EBITDA<span class="bar-sublabel">Upper middle market</span></div>
+      <div class="bar-track">
+        <!-- 9x to 13x: start 9/18=50%, width 4/18=22.2% -->
+        <div class="bar-fill" style="left:50%;width:22.2%;background:linear-gradient(135deg,#1e8449,#27ae60);">9–13x</div>
+        <div class="bar-midline" style="left:61.1%;"></div><!-- midpoint 11x -->
+      </div>
+      <div class="bar-ev">EV: $225M–$650M</div>
+    </div>
+
+    <div class="bar-row">
+      <div class="bar-label">$50–100M EBITDA<span class="bar-sublabel">Large middle market</span></div>
+      <div class="bar-track">
+        <!-- 10x to 15x: start 10/18=55.6%, width 5/18=27.8% -->
+        <div class="bar-fill" style="left:55.6%;width:27.8%;background:linear-gradient(135deg,#1a5fa8,#2980b9);">10–15x</div>
+        <div class="bar-midline" style="left:69.4%;"></div><!-- midpoint 12.5x -->
+      </div>
+      <div class="bar-ev">EV: $500M–$1.5B</div>
+    </div>
+
+    <div class="axis-row">
+      <span>0x</span><span>3x</span><span>6x</span><span>9x</span><span>12x</span><span>15x</span><span>18x EV/EBITDA →</span>
+    </div>
+    <div class="chart-caption">Bars represent the realistic range for specialty chemicals platforms with differentiated chemistry. Carve-outs and commodity-exposed assets clear 2–4 turns lower. Tech-enabled platforms with AI/semiconductor/pharma end markets can exceed the upper bound.</div>
+  </div>
+
+  <!-- TIER DETAIL TABLE -->
+  <table class="tier-table">
+    <thead>
+      <tr>
+        <th style="width:120px;">Tier</th>
+        <th style="width:110px;">EV/EBITDA</th>
+        <th style="width:110px;">Implied EV</th>
+        <th>Who Buys</th>
+        <th>Leverage Available</th>
+        <th>Deal Comps & Context</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="tier-badge t1-badge">$2–5M</span></td>
+        <td>
+          <span class="multiple-big">4.0–7.0x</span>
+          <span class="multiple-mid">Midpoint ~5.5x</span>
+        </td>
+        <td><span class="ev-range">$8M–$35M</span></td>
+        <td>
+          <div class="buyer-chips">
+            <span class="chip">Search Funds</span>
+            <span class="chip">Family Offices</span>
+            <span class="chip">Micro-PE</span>
+            <span class="chip">PE Add-ons</span>
+          </div>
+          <div class="deal-note" style="margin-top:6px;">Institutional PE absent. Returns math is tight at this size. Most exits are strategic tuck-ins, not platform sales.</div>
+        </td>
+        <td><span class="deal-note">2–3x EBITDA<br>Asset-based lenders</span></td>
+        <td>
+          <div class="deal-note">
+            <span class="deal-bold">UFP Technologies / Welch Fluorocarbon</span> (Jul '24) — <span class="deal-multiple">$34.6M at 11.5x</span><br>
+            Exception: niche fluorochemical IP, strategic buyer. Illustrates premium ceiling for small proprietary assets.<br>
+            <span class="deal-bold">GF Data H1 2025 avg for $1–5M tier: 5.5x TTM EBITDA</span>
+          </div>
+          <span class="premium-pill">↑ Proprietary IP can reach 10–12x even at sub-$5M EBITDA with strategic buyer</span>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge t2-badge">$5–10M</span></td>
+        <td>
+          <span class="multiple-big">5.0–8.5x</span>
+          <span class="multiple-mid">Midpoint ~6.75x</span>
+        </td>
+        <td><span class="ev-range">$25M–$85M</span></td>
+        <td>
+          <div class="buyer-chips">
+            <span class="chip">Lower-MM PE</span>
+            <span class="chip">Platte River Equity</span>
+            <span class="chip">Brightstar</span>
+            <span class="chip">PE Add-ons</span>
+          </div>
+          <div class="deal-note" style="margin-top:6px;">First true PE tier. Buy-and-build is the core thesis. Most acquisitions here feed an existing chemical platform, not standalone.</div>
+        </td>
+        <td><span class="deal-note">3–4x EBITDA<br>Limited institutional debt</span></td>
+        <td>
+          <div class="deal-note">
+            <span class="deal-bold">Brightstar Capital / Douglas Products</span> — specialty chemical products (pest mgmt, thermal fluids); PE platform initiation<br>
+            <span class="deal-bold">One Equity Partners / Imperative Chemical Partners</span> — specialty chemicals recapitalization, Midland TX<br>
+            <span class="deal-bold">GF Data H1 2025 avg for $5–10M tier: 5.6x</span>; specialty chem premium adds 1–2 turns
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge t3-badge">$10–25M</span></td>
+        <td>
+          <span class="multiple-big">7.0–11.0x</span>
+          <span class="multiple-mid">Midpoint ~9.0x</span>
+        </td>
+        <td><span class="ev-range">$70M–$275M</span></td>
+        <td>
+          <div class="buyer-chips">
+            <span class="chip">SK Capital</span>
+            <span class="chip">JLL Partners</span>
+            <span class="chip">Arsenal Capital</span>
+            <span class="chip">Strategics</span>
+          </div>
+          <div class="deal-note" style="margin-top:6px;">First institutional platform tier. Multiple arbitrage thesis works: buy at 8–10x, build with add-ons, exit to large strategic at 12–15x in 5–7 yrs.</div>
+        </td>
+        <td><span class="deal-note">4–5x EBITDA<br>Broadly syndicated loans viable</span></td>
+        <td>
+          <div class="deal-note">
+            <span class="deal-bold">Quaker Houghton / Dipsol</span> (Mar '25) — surface treatment specialty chemicals; <span class="deal-multiple">$157M at 10.5x</span> on $15M EBITDA; strategic buyer paid at high end<br>
+            <span class="deal-bold">Capstone Partners chemicals middle market 2021–2025 avg: 10.0x EV/EBITDA</span>
+          </div>
+          <span class="premium-pill">↑ Tech-enabled platforms can reach 11–13x at this size</span>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge t4-badge">$25–50M</span></td>
+        <td>
+          <span class="multiple-big">9.0–13.0x</span>
+          <span class="multiple-mid">Midpoint ~11.0x</span>
+        </td>
+        <td><span class="ev-range">$225M–$650M</span></td>
+        <td>
+          <div class="buyer-chips">
+            <span class="chip">SK Capital</span>
+            <span class="chip">Cinven</span>
+            <span class="chip">Gemspring</span>
+            <span class="chip">Arsenal</span>
+            <span class="chip">Mid-cap Strategics</span>
+          </div>
+          <div class="deal-note" style="margin-top:6px;">Most active PE tier. Depth of competition from institutional sponsors and strategic buyers often drives multiples toward the upper bound for quality assets.</div>
+        </td>
+        <td><span class="deal-note">5–6x EBITDA<br>Full institutional debt markets</span></td>
+        <td>
+          <div class="deal-note">
+            <span class="deal-bold">Pritzker Private Capital / Buckman Laboratories</span> (Mar '25) — specialty industrial chemicals (~$400M rev); undisclosed but est. 10–12x for quality asset<br>
+            <span class="deal-bold">SK Capital / Valtris Specialty Chemicals</span> — additives & precursors, 9 mfg sites; acquired from H.I.G. Capital; est. 9–11x<br>
+            <span class="deal-bold">RL Hulett PE median 2025: 12.3x EV/EBITDA (specialty chem & performance materials)</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge t5-badge">$50–100M</span></td>
+        <td>
+          <span class="multiple-big">10.0–15.0x</span>
+          <span class="multiple-mid">Midpoint ~12.0x</span>
+        </td>
+        <td><span class="ev-range">$500M–$1.5B</span></td>
+        <td>
+          <div class="buyer-chips">
+            <span class="chip">Large PE (Bain, Cinven)</span>
+            <span class="chip">Carve-out Specialists</span>
+            <span class="chip">Strategic Acquirers</span>
+          </div>
+          <div class="deal-note" style="margin-top:6px;">Wide spread at this tier: carve-outs trade 4–7x, while clean platforms with tech differentiation reach 12–15x+. Widest range of any tier.</div>
+        </td>
+        <td><span class="deal-note">5–7x EBITDA<br>Investment grade debt available for best assets</span></td>
+        <td>
+          <div class="deal-note">
+            <span class="deal-bold">Gemspring / Goodyear Polymer Chemicals</span> (May '25) — <span class="deal-multiple">$650M at 5.0x</span> (~$130M EBITDA); carve-out discount<br>
+            <span class="deal-bold">Bain Capital + Cinven / Lonza Specialty Ingredients</span> — CHF 4.2B; microbial control; buy-and-build platform; 10–13x est.
+          </div>
+          <span class="discount-pill">↓ Carve-outs clear 4–7x regardless of size</span>
+          <span class="premium-pill">↑ Semiconductor/pharma specialty chem: 12–17x (Damodaran Jan '26: 13.36x public comps)</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- DRIVERS -->
+  <div class="two-col" style="margin-top:16px;">
+    <div class="driver-card">
+      <h3 class="up">↑ Multiple Premium Drivers</h3>
+      <div class="driver-item">
+        <span class="driver-icon">🔒</span>
+        <div>
+          <div>Proprietary formulations / hard-to-replicate IP</div>
+          <div class="driver-detail">Trade secrets, regulatory certifications, customer-embedded specs</div>
+        </div>
+      </div>
+      <div class="driver-item">
+        <span class="driver-icon">🎯</span>
+        <div>
+          <div>Mission-critical inputs (semi, pharma, defense)</div>
+          <div class="driver-detail">Low substitutability, high switching cost = pricing power</div>
+        </div>
+      </div>
+      <div class="driver-item">
+        <span class="driver-icon">📊</span>
+        <div>
+          <div>High gross margins (30%+) with cost pass-through</div>
+          <div class="driver-detail">Raw material indexing reduces earnings volatility</div>
+        </div>
+      </div>
+      <div class="driver-item">
+        <span class="driver-icon">📋</span>
+        <div>
+          <div>Long-term contracts / sticky customer relationships</div>
+          <div class="driver-detail">Spec-in positions, multi-year supply agreements</div>
+        </div>
+      </div>
+      <div class="driver-item">
+        <span class="driver-icon">💻</span>
+        <div>
+          <div>Digital / tech-enabled platform</div>
+          <div class="driver-detail">AI formulation, process optimization, supply chain software</div>
+        </div>
+      </div>
+      <div class="driver-item">
+        <span class="driver-icon">🏗️</span>
+        <div>
+          <div>Reshoring / domestic supply narrative</div>
+          <div class="driver-detail">Federal incentives for advanced materials, energy transition inputs</div>
+        </div>
+      </div>
+    </div>
+    <div class="driver-card">
+      <h3 class="down">↓ Multiple Discount Drivers</h3>
+      <div class="driver-item">
+        <span class="driver-icon">✂️</span>
+        <div>
+          <div>Carve-out / corporate divestiture structure</div>
+          <div class="driver-detail">Stranded costs, TSA complexity, seller urgency: 4–7x regardless of size</div>
+        </div>
+      </div>
+      <div class="driver-item">
+        <span class="driver-icon">📉</span>
+        <div>
+          <div>Commodity chemical exposure or spread-dependent margins</div>
+          <div class="driver-detail">Earnings visibility impaired; PE lenders price in cycle risk</div>
+        </div>
+      </div>
+      <div class="driver-item">
+        <span class="driver-icon">⚠️</span>
+        <div>
+          <div>Customer concentration (&gt;20% in single account)</div>
+          <div class="driver-detail">Binary revenue risk overhangs any diligence process</div>
+        </div>
+      </div>
+      <div class="driver-item">
+        <span class="driver-icon">🏭</span>
+        <div>
+          <div>Asset-heavy, capex-intensive production</div>
+          <div class="driver-detail">High maintenance capex reduces free cash flow conversion</div>
+        </div>
+      </div>
+      <div class="driver-item">
+        <span class="driver-icon">🔄</span>
+        <div>
+          <div>Cyclical end markets (auto, construction, packaging)</div>
+          <div class="driver-detail">Trough-to-peak EBITDA swings reduce confidence in underwriting</div>
+        </div>
+      </div>
+      <div class="driver-item">
+        <span class="driver-icon">📏</span>
+        <div>
+          <div>Sub-$10M EBITDA size penalty</div>
+          <div class="driver-detail">Roughly 1–2 turns below comparably positioned larger peers</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 2: USCHEM POSITIONING FRAMEWORK -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2>USCHEM Positioning Framework</h2>
+  </div>
+
+  <div class="section-note">
+    Score each dimension to calibrate which part of the tier range applies. High scores across most dimensions push toward the upper bound; concentration of low scores signals the lower bound or a discount. The USCHEM column is left for your team to complete — suggested considerations are noted in italics where relevant.
+  </div>
+
+  <table class="framework-table">
+    <thead>
+      <tr>
+        <th style="width:170px;">Dimension</th>
+        <th class="center" style="width:140px;">Low Score → Discount<br><span style="font-weight:400;color:#8eacc8;">~4–7x</span></th>
+        <th class="center" style="width:140px;">Mid Score → Market<br><span style="font-weight:400;color:#8eacc8;">~7–10x</span></th>
+        <th class="center" style="width:140px;">High Score → Premium<br><span style="font-weight:400;color:#8eacc8;">~10–14x+</span></th>
+        <th class="center" style="width:85px;">Multiple Impact</th>
+        <th style="width:130px;">USCHEM Assessment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="dim-name">Formulation IP</div>
+          <div class="dim-desc">Proprietary chemistry, trade secrets, switching barriers</div>
+        </td>
+        <td class="center"><div class="level-cell level-low">Commodity blend; easily substitutable; no IP moat</div></td>
+        <td class="center"><div class="level-cell level-mid">Differentiated but replicable; customer preference not lock-in</div></td>
+        <td class="center"><div class="level-cell level-high">Proprietary formulations spec'd into customer processes; regulatory certifications; trade secrets</div></td>
+        <td class="center"><span class="impact-badge impact-premium">±3–5x</span></td>
+        <td><div class="uschem-cell">e.g., Proprietary cleaning/process chemistries? Reg. certifications?</div></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="dim-name">End Market Quality</div>
+          <div class="dim-desc">Growth profile and criticality of served end markets</div>
+        </td>
+        <td class="center"><div class="level-cell level-low">Auto, construction, packaging; mature/cyclical</div></td>
+        <td class="center"><div class="level-cell level-mid">Industrial manufacturing, food processing; stable demand</div></td>
+        <td class="center"><div class="level-cell level-high">Semiconductor, pharma, defense, AI infrastructure; structural growth tailwinds</div></td>
+        <td class="center"><span class="impact-badge impact-premium">±2–4x</span></td>
+        <td><div class="uschem-cell">e.g., Industrial cleaning tech — which verticals dominate revenue?</div></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="dim-name">Gross Margin Profile</div>
+          <div class="dim-desc">Gross margin % and raw material pass-through capability</div>
+        </td>
+        <td class="center"><div class="level-cell level-low">&lt;20% gross margin; high feedstock sensitivity; no pass-through</div></td>
+        <td class="center"><div class="level-cell level-mid">20–30% gross margin; partial cost indexing in contracts</div></td>
+        <td class="center"><div class="level-cell level-high">30%+ gross margin; full raw material cost pass-through; stable EBITDA margin</div></td>
+        <td class="center"><span class="impact-badge impact-high">±2–3x</span></td>
+        <td><div class="uschem-cell">Gross margin %; does USCHEM have pricing power or margin compression risk?</div></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="dim-name">Revenue Predictability</div>
+          <div class="dim-desc">Contract structure, retention rates, recurring demand</div>
+        </td>
+        <td class="center"><div class="level-cell level-low">Predominantly spot pricing; high churn; transaction-based</div></td>
+        <td class="center"><div class="level-cell level-mid">Annual supply agreements; decent retention; some spot exposure</div></td>
+        <td class="center"><div class="level-cell level-high">Multi-year contracts; 90%+ gross retention; consumable repeat demand</div></td>
+        <td class="center"><span class="impact-badge impact-high">±2–3x</span></td>
+        <td><div class="uschem-cell">NRR / gross retention? Contract vs. spot revenue split?</div></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="dim-name">Customer Concentration</div>
+          <div class="dim-desc">Revenue distribution across customer base</div>
+        </td>
+        <td class="center"><div class="level-cell level-low">&gt;30% in top customer; binary revenue risk</div></td>
+        <td class="center"><div class="level-cell level-mid">Top customer 15–30%; manageable but present risk</div></td>
+        <td class="center"><div class="level-cell level-high">Top customer &lt;15%; diversified base; no single customer dependency</div></td>
+        <td class="center"><span class="impact-badge impact-mid">±1–2x</span></td>
+        <td><div class="uschem-cell">Top 5 customer % of revenue? Any single account &gt;20%?</div></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="dim-name">Tech / Digital Enablement</div>
+          <div class="dim-desc">Software, AI, or digital tools differentiating the platform</div>
+        </td>
+        <td class="center"><div class="level-cell level-low">No digital differentiation; pure product company</div></td>
+        <td class="center"><div class="level-cell level-mid">Some digital tools (e.g., CRM, ERP); beginning to integrate data into delivery</div></td>
+        <td class="center"><div class="level-cell level-high">Proprietary platform software; AI-driven formulation or process optimization; data moat</div></td>
+        <td class="center"><span class="impact-badge impact-premium">±2–4x</span></td>
+        <td><div class="uschem-cell">Core thesis — what is the "tech" in US Chemical Technologies?</div></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="dim-name">Growth Trajectory</div>
+          <div class="dim-desc">Organic revenue growth rate and EBITDA expansion</div>
+        </td>
+        <td class="center"><div class="level-cell level-low">&lt;3% annual growth; flat or declining EBITDA</div></td>
+        <td class="center"><div class="level-cell level-mid">5–10% annual growth; stable to expanding margins</div></td>
+        <td class="center"><div class="level-cell level-high">&gt;10% organic growth; margin expansion pathway clear; new customer wins accelerating</div></td>
+        <td class="center"><span class="impact-badge impact-high">±1–3x</span></td>
+        <td><div class="uschem-cell">Last 3yr organic revenue CAGR? EBITDA margin trend?</div></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="dim-name">EBITDA Scale</div>
+          <div class="dim-desc">Absolute EBITDA size — the most mechanical driver</div>
+        </td>
+        <td class="center"><div class="level-cell level-low">&lt;$5M EBITDA; search fund / micro-PE territory</div></td>
+        <td class="center"><div class="level-cell level-mid">$10–25M EBITDA; core institutional PE interest begins</div></td>
+        <td class="center"><div class="level-cell level-high">$25M+ EBITDA; full institutional market; leverage available to enhance returns</div></td>
+        <td class="center"><span class="impact-badge impact-premium">±2–6x</span></td>
+        <td><div class="uschem-cell">LTM adj. EBITDA? NTM trajectory?</div></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout" style="margin-top:16px;">
+    <div class="callout-item">
+      <h4>Implied Multiple Range Logic</h4>
+      <p>Score 5–8 dimensions as "High" → <strong>10–14x range</strong>. Mix of High/Mid → <strong>8–11x</strong>. Majority Low or Mid → <strong>5–8x</strong>. A single "Low" on Tech/Digital or End Market Quality anchors the range down even if others score well.</p>
+    </div>
+    <div class="callout-item">
+      <h4>PE vs. Strategic Buyer Impact</h4>
+      <p>Strategic buyers in 2025 paid <strong>10.3x median</strong> (RL Hulett) vs. PE at 12.3x median. Counterintuitively, PE paid more — reflecting their buy-and-build thesis and dry powder. Best outcome for USCHEM: competitive tension between both buyer types.</p>
+    </div>
+    <div class="callout-item">
+      <h4>The "Tech" Premium Question</h4>
+      <p>The name implies a software or tech-enabled moat. If the business genuinely has proprietary process software or AI-driven formulation, it could command <strong>2–4 additional turns</strong> vs. a pure chemical company — potentially putting it in the 12–15x band regardless of EBITDA size.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 3: COMPS TABLES -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2>Public & Private Comparable Transactions</h2>
+  </div>
+
+  <!-- PUBLIC COMPS -->
+  <div class="sub-header">Public Trading Comps — Specialty Chemicals Technology Platforms</div>
+  <div class="section-note">
+    Public comps anchor the exit multiple conversation for PE buyers and set the ceiling for strategic buyer pricing. Note the wide spread driven by end market exposure: ESI at ~18–23x reflects AI/semiconductor tailwinds; KWR at ~10.5x reflects mature industrial end markets. USCHEM's exit multiple aspiration should be calibrated to which public comp best reflects its end market and margin profile.
+  </div>
+
+  <table class="comps-table">
+    <thead>
+      <tr>
+        <th style="width:190px;">Company</th>
+        <th class="right">Revenue</th>
+        <th class="right">Adj. EBITDA</th>
+        <th class="right">EBITDA Margin</th>
+        <th class="right">Enterprise Value</th>
+        <th class="right">EV/EBITDA</th>
+        <th style="width:220px;">Relevance to USCHEM</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="company-name">Element Solutions <span class="ticker">ESI</span></div>
+          <div class="company-desc">Specialty electronics & industrial chemistry technology platform; AI/semiconductor-exposed; serial acquirer</div>
+        </td>
+        <td class="right mono">$2.6B<br><span style="font-size:10px;color:#999;">FY2025</span></td>
+        <td class="right mono">$540M<br><span style="font-size:10px;color:#999;">FY2025 guided</span></td>
+        <td class="right">
+          27%
+          <div class="margin-bar"><div class="margin-fill" style="width:27%;background:#1a5fa8;"></div></div>
+        </td>
+        <td class="right mono">$12.4B</td>
+        <td class="right">
+          <span class="multiple-cell multiple-premium">~23x LTM</span><br>
+          <span class="multiple-cell multiple-mid-val" style="font-size:11px;">~18x NTM</span>
+        </td>
+        <td>
+          <span class="relevance-tag tag-primary">Primary — Business Model</span>
+          <div class="deal-note" style="margin-top:4px;">Best comp for a tech-enabled specialty chem platform executing a buy-and-build strategy. ESI's premium multiple is a direct function of AI/data center end market exposure. If USCHEM has similar high-growth end markets, this is the aspirational exit comp. <strong>Caveat:</strong> ESI is trading at an elevated multiple due to AI tailwinds; normalize to 14–18x for non-semiconductor assets.</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="company-name">Quaker Houghton <span class="ticker">KWR</span></div>
+          <div class="company-desc">Industrial process fluids & specialty chemicals; global manufacturing customer base; active acquirer</div>
+        </td>
+        <td class="right mono">$1.89B<br><span style="font-size:10px;color:#999;">FY2025</span></td>
+        <td class="right mono">$299M<br><span style="font-size:10px;color:#999;">FY2025</span></td>
+        <td class="right">
+          16%
+          <div class="margin-bar"><div class="margin-fill" style="width:16%;background:#1e8449;"></div></div>
+        </td>
+        <td class="right mono">$3.16B</td>
+        <td class="right">
+          <span class="multiple-cell multiple-mid-val">~10.5x</span>
+        </td>
+        <td>
+          <span class="relevance-tag tag-primary">Primary — Customer Profile</span>
+          <div class="deal-note" style="margin-top:4px;">Closest comp for specialty chemicals serving heavy industrial manufacturing. KWR's 10.5x multiple reflects its well-established but slower-growth business in auto, metals, and industrial markets. Also a likely strategic acquirer of USCHEM given its stated bolt-on acquisition strategy and Dipsol/Natech deal precedent. <strong>Notably acquired Dipsol at 10.5x in Mar '25.</strong></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="company-name">Balchem <span class="ticker">BCPC</span></div>
+          <div class="company-desc">Specialty ingredients & performance products; human/animal nutrition; microencapsulation IP</div>
+        </td>
+        <td class="right mono">$1.04B<br><span style="font-size:10px;color:#999;">FY2025 (record)</span></td>
+        <td class="right mono">$275M<br><span style="font-size:10px;color:#999;">FY2025 (record)</span></td>
+        <td class="right">
+          26.5%
+          <div class="margin-bar"><div class="margin-fill" style="width:26.5%;background:#1a5fa8;"></div></div>
+        </td>
+        <td class="right mono">~$5.4B</td>
+        <td class="right">
+          <span class="multiple-cell multiple-premium">~19–20x</span>
+        </td>
+        <td>
+          <span class="relevance-tag tag-secondary">Secondary — Margin Profile</span>
+          <div class="deal-note" style="margin-top:4px;">Best comp for a specialty chemicals company with proprietary IP, recurring demand (consumable ingredients), and consistently high margins. Balchem's ~19x reflects premium quality: 9%+ annual organic growth, 17 consecutive dividend increases, moat in microencapsulation. If USCHEM has comparable margin quality and recurring demand, this frames the upside multiple range.</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="company-name">Innospec <span class="ticker">IOSP</span></div>
+          <div class="company-desc">Performance chemicals for fuel additives, oilfield, personal care; mid-market specialty positioning</div>
+        </td>
+        <td class="right mono">$1.78B<br><span style="font-size:10px;color:#999;">TTM Apr '26</span></td>
+        <td class="right mono">~$200M<br><span style="font-size:10px;color:#999;">Est. ~11% margin</span></td>
+        <td class="right">
+          ~11%
+          <div class="margin-bar"><div class="margin-fill" style="width:11%;background:#c7970a;"></div></div>
+        </td>
+        <td class="right mono">~$1.8B</td>
+        <td class="right">
+          <span class="multiple-cell multiple-low-val">~9x</span>
+        </td>
+        <td>
+          <span class="relevance-tag tag-secondary">Secondary — Size Calibration</span>
+          <div class="deal-note" style="margin-top:4px;">Good benchmark for a mid-market specialty chem platform with mixed end market exposure. Innospec's ~9x reflects lower margin profile and oilfield exposure (more cyclical than pharma/semicon). Sets the floor for an institutional-quality specialty chem platform without premium end market positioning.</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <!-- PRIVATE DEAL COMPS -->
+  <div class="sub-header" style="margin-top:32px;">Private Deal Comps — Specialty Chemicals Transactions (2024–2025)</div>
+  <div class="section-note">
+    Private comps are the most direct read-through to where USCHEM would clear in a transaction. Sorted by deal date descending. Note the consistent pattern: strategic buyers at 10–12x for quality assets, PE carve-outs at 4–7x, and small add-ons below $30M EV at 5–8x except where unique IP justifies more.
+  </div>
+
+  <table class="comps-table">
+    <thead>
+      <tr>
+        <th style="width:160px;">Target</th>
+        <th style="width:145px;">Acquirer</th>
+        <th>Close</th>
+        <th class="right">Deal EV</th>
+        <th class="right">EBITDA (Est.)</th>
+        <th class="right">EV/EBITDA</th>
+        <th style="width:90px;">Tier</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="deal-bold">Dipsol Chemical</div>
+          <div class="deal-note">Surface treatment specialty chemicals; Japan-based; global operations</div>
+        </td>
+        <td><div class="deal-note">Quaker Houghton<br><span style="font-size:9.5px;color:#999;">Strategic (Public)</span></div></td>
+        <td class="mono" style="white-space:nowrap;">Mar 2025</td>
+        <td class="right mono">$157M</td>
+        <td class="right mono">~$15M</td>
+        <td class="right"><span class="multiple-cell multiple-mid-val">10.5x</span></td>
+        <td><span class="tier-badge t3-badge" style="font-size:10px;">$10–25M</span></td>
+        <td>
+          <span class="relevance-tag tag-primary">Highest Relevance</span>
+          <div class="deal-note">Most direct precedent: strategic buyer (the likely USCHEM acquirer) paying 10.5x for a specialty process chemicals business in the $10–25M EBITDA tier. Validates the upper-mid band of the $10–25M tier range for quality assets with global strategic fit.</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="deal-bold">Buckman Laboratories</div>
+          <div class="deal-note">Specialty industrial chemicals; paper, water treatment, oil; Memphis TN</div>
+        </td>
+        <td><div class="deal-note">Pritzker Private Capital<br><span style="font-size:9.5px;color:#999;">PE Platform</span></div></td>
+        <td class="mono">Mar 2025</td>
+        <td class="right mono">Undisclosed</td>
+        <td class="right mono">$40–60M est.</td>
+        <td class="right"><span class="multiple-cell multiple-mid-val">Est. 10–12x</span></td>
+        <td><span class="tier-badge t4-badge" style="font-size:10px;">$25–50M</span></td>
+        <td>
+          <span class="relevance-tag tag-secondary">High Relevance</span>
+          <div class="deal-note">PE platform initiation for a large specialty industrial chemicals business with deep B2B relationships. Buckman's ~$400M revenue and strong market position likely justified 10–12x. Good benchmark for upper tier specialty chem PE platform pricing.</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="deal-bold">Goodyear Polymer Chemicals</div>
+          <div class="deal-note">Specialty polymer chemicals; carved out of Goodyear Tire & Rubber</div>
+        </td>
+        <td><div class="deal-note">Gemspring Capital<br><span style="font-size:9.5px;color:#999;">PE (Carve-out)</span></div></td>
+        <td class="mono">May 2025</td>
+        <td class="right mono">$650M</td>
+        <td class="right mono">~$130M</td>
+        <td class="right"><span class="multiple-cell multiple-discount">5.0x</span></td>
+        <td><span class="tier-badge t5-badge" style="font-size:10px;">$50–100M+</span></td>
+        <td>
+          <span class="relevance-tag tag-caution">Carve-out Ref</span>
+          <div class="deal-note">Illustrates carve-out discount at any scale. Despite large EBITDA, PE paid only 5.0x due to complexity, stranded costs, and seller urgency. Reference for what a carve-out discount looks like — not an indication of market pricing for a clean standalone asset.</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="deal-bold">Welch Fluorocarbon</div>
+          <div class="deal-note">Niche specialty fluorochemicals; specialty technical applications</div>
+        </td>
+        <td><div class="deal-note">UFP Technologies<br><span style="font-size:9.5px;color:#999;">Strategic (Public)</span></div></td>
+        <td class="mono">Jul 2024</td>
+        <td class="right mono">$34.6M</td>
+        <td class="right mono">~$3M</td>
+        <td class="right"><span class="multiple-cell multiple-premium">11.5x</span></td>
+        <td><span class="tier-badge t1-badge" style="font-size:10px;">$2–5M</span></td>
+        <td>
+          <span class="relevance-tag tag-secondary">Premium IP Reference</span>
+          <div class="deal-note">Standout data point: strategic buyer paid 11.5x for a sub-$5M EBITDA company because of highly differentiated fluorochemical IP and mission-critical application fit. Proves that proprietary chemistry can override the size discount at any scale. Aspirational ceiling for small but IP-rich assets.</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="deal-bold">Valtris Specialty Chemicals</div>
+          <div class="deal-note">Specialty additives & precursors; plastics, coatings, pharma, personal care; 9 mfg sites</div>
+        </td>
+        <td><div class="deal-note">SK Capital Partners<br><span style="font-size:9.5px;color:#999;">PE (from H.I.G.)</span></div></td>
+        <td class="mono">2022</td>
+        <td class="right mono">Undisclosed</td>
+        <td class="right mono">$25–40M est.</td>
+        <td class="right"><span class="multiple-cell multiple-mid-val">Est. 9–11x</span></td>
+        <td><span class="tier-badge t4-badge" style="font-size:10px;">$25–50M</span></td>
+        <td>
+          <span class="relevance-tag tag-secondary">PE-to-PE Reference</span>
+          <div class="deal-note">PE-to-PE secondary buyout of a well-regarded specialty additives platform. SK Capital's consistent focus on the specialty chem & pharma sector means they underwrite at a premium to generalist PE — 9–11x for a quality specialty additive asset is consistent with their strategy. Reference for PE platform pricing at the upper-mid tier.</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="deal-bold">Imperative Chemical Partners</div>
+          <div class="deal-note">Specialty chemicals (B2B); Midland TX; oilfield and industrial applications</div>
+        </td>
+        <td><div class="deal-note">One Equity Partners<br><span style="font-size:9.5px;color:#999;">PE Recapitalization</span></div></td>
+        <td class="mono">2024</td>
+        <td class="right mono">Undisclosed</td>
+        <td class="right mono">$10–20M est.</td>
+        <td class="right"><span class="multiple-cell multiple-low-val">Est. 7–9x</span></td>
+        <td><span class="tier-badge t3-badge" style="font-size:10px;">$10–25M</span></td>
+        <td>
+          <span class="relevance-tag tag-caution">Mid-market Baseline</span>
+          <div class="deal-note">PE recapitalization (not a clean platform buyout) for a specialty chemicals business with oilfield exposure. The 7–9x estimate reflects both the recap structure (typically lower) and cyclical end market discount. Sets the floor for the $10–25M tier with commodity end market exposure.</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="deal-bold">Douglas Products</div>
+          <div class="deal-note">Specialty chemicals for pest management, thermal fluids, sanitary sewer; brands ProFume & Vi-Tec</div>
+        </td>
+        <td><div class="deal-note">Brightstar Capital Partners<br><span style="font-size:9.5px;color:#999;">PE Platform</span></div></td>
+        <td class="mono">2024</td>
+        <td class="right mono">Undisclosed</td>
+        <td class="right mono">$5–15M est.</td>
+        <td class="right"><span class="multiple-cell multiple-low-val">Est. 6–8x</span></td>
+        <td><span class="tier-badge t2-badge" style="font-size:10px;">$5–10M</span></td>
+        <td>
+          <span class="relevance-tag tag-caution">Lower-MM Reference</span>
+          <div class="deal-note">Lower-MM PE platform initiation in a niche specialty chem market with branded chemistry (ProFume, Vi-Tec). Brightstar specifically targets founder-owned businesses with strong market positions but limited scale. 6–8x is consistent with the lower-MM PE playbook for this size.</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="deal-bold">Natech Ltd.</div>
+          <div class="deal-note">Surface treatment chemicals; UK-based; industrial applications; small tuck-in</div>
+        </td>
+        <td><div class="deal-note">Quaker Houghton<br><span style="font-size:9.5px;color:#999;">Strategic Tuck-in</span></div></td>
+        <td class="mono">Apr 2025</td>
+        <td class="right mono">~$5.2M</td>
+        <td class="right mono">&lt;$1M</td>
+        <td class="right"><span class="multiple-cell" style="color:#999;">n/a</span></td>
+        <td><span class="tier-badge t1-badge" style="font-size:10px;">&lt;$2M</span></td>
+        <td>
+          <span class="relevance-tag tag-caution">Tuck-in Reference</span>
+          <div class="deal-note">Micro tuck-in by a strategic buyer for geographic/product line expansion. At this size, deal is priced on asset value and strategic fit rather than EBITDA multiple. Illustrates that strategics will do sub-$10M deals but these are purely additive to existing platforms, not standalone investments.</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SUMMARY BOX -->
+  <div class="callout" style="margin-top:20px;">
+    <div class="callout-item">
+      <h4>Read-Through for USCHEM</h4>
+      <p>The comps consistently show <strong>10–12x</strong> for quality specialty chemistry assets sold to strategics, and <strong>9–13x</strong> for institutional PE platform builds. The Dipsol deal (10.5x by KWR) is the single best precedent — same buyer type (industrial chem strategic), similar size tier, similar product category.</p>
+    </div>
+    <div class="callout-item">
+      <h4>Buyer Competition Matters</h4>
+      <p>If both KWR and SK Capital are bidding on USCHEM, PE's buy-and-build premium creates tension. In 2025, <strong>PE paid a higher median (12.3x) than strategics (10.3x)</strong> — counterintuitive but driven by PE's multiple arbitrage thesis and dry powder deployment pressure.</p>
+    </div>
+    <div class="callout-item">
+      <h4>USCHEM's Tech Premium Wildcard</h4>
+      <p>If "Chemical Technologies" reflects genuine software or AI-enabled chemistry differentiation, ESI's ~18x NTM forward multiple and Balchem's ~19–20x are the relevant ceiling comps — not the 10–12x industrial process chemical benchmarks. That is a 5–8 turn upside to the multiple conversation.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<div class="page-footer">
+  <div class="source-list">
+    <strong>Sources:</strong> GF Data H1 2025 & Q3 2025 M&A Reports · RL Hulett / PitchBook Specialty Chemicals & Performance Materials 2025 · Capstone Partners Chemicals Market Update July 2025
+    · Valuationresearch.com Specialty & Commodity Chemicals Feb 2025 · KBS Corporate Chemicals M&A Jan 2026 · BCG "From Megadeals to Focused Transactions" Mar 2026
+    · KPMG ENRC M&A Trends 2025 · PwC Chemicals 2026 Outlook · Damodaran NYU Stern Sector Data Jan 2026 · SEC Filings: ESI 8-K Q1 2026, KWR 8-K FY2025, BCPC 8-K FY2025
+    · Quaker Houghton / Dipsol press release Mar 2025 · Capstone Partners Chemicals M&A Update · The Middle Market / Mergers & Acquisitions industry reports
+  </div>
+  <div style="text-align:right;flex-shrink:0;margin-left:24px;">
+    <div style="font-weight:700;color:var(--navy);font-family:'IBM Plex Mono',monospace;font-size:9.5px;">QUIET CAPITAL</div>
+    <div style="color:var(--muted);">Confidential — June 2026</div>
+  </div>
+</div>
+
+</div><!-- /content -->
+</body>
+</html>
